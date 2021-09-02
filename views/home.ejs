@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+  <%- include('partials/head') %> 
+  <body style="background-color: white">
+    <!-- ------------ navbar ------------- -->
+    
+  
+    <%- include('partials/nav',{location:""}) %> 
+    
+    <!-- ------------ navbar ------------- -->
+
+    <!-- --------------carousel--------------- -->
+    <section class="container col-lg-8 col-md-12 col-sm-12 mt-5">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/image/c1.png" class="w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/image/c2.png" class="w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/image/c2.png" class="w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- --------------carousel--------------- -->
+
+    <!-- svg img section  -->
+    <section class="container col-lg-8 col-md-12 col-sm-12">
+      <div class="row align-items-center">
+        <!-- img part  -->
+        <div class="col-sm-6 d-flex justify-content-center">
+          <img
+            class="img-fluid"
+            src="/image/middleSection.svg"
+            style="max-width: 80%; height: auto"
+          />
+        </div>
+        <!-- img part  -->
+
+        <!-- text part  -->
+        <div class="col-sm-6">
+          <h1>Lorem Ipsum</h1>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+      </div>
+      <!-- text part  -->
+    </section>
+    <!-- svg img section  -->
+    <%if(!login) {%>
+    <section class="container col-lg-8 col-md-12 col-sm-12 mb-5">
+      <div class="row">
+        <div class="col-sm-12" style="text-align: center">
+          <h1 class="text-center text-uppercase" style="font-size: 50px">
+            Sign UP and Get Started
+          </h1>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-6 text-center mt-5 d-flex">
+          <div class="col-6 mx-auto">
+            <a class="signUp" href="#login" data-bs-toggle="modal">Login</a>
+          </div>
+          <div class="col-6 mx-auto">
+            <a class="signUp" href="#signup" data-bs-toggle="modal">SignUp</a>
+             </div>
+        </div>
+      </div>
+        <%}%>
+    </section>
+
+    <%- include('partials/footer') %> 
+      
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<%- include('partials/head') %> 
+
+  <body>
+    
+    <!-- ------------ navbar ------------- -->
+    <%- include('partials/nav',{location: "contact"}) %> 
+    <!-- ------------ navbar ------------- -->
+    
+    <section class="container col-lg-8 col-md-12 col-sm-12 mb-5 mt-4">
+        <div class="row">
+            <div class="col-sm-12" style="text-align: center">
+              <h1 class="text-center text-uppercase" style="font-size: 50px; color: #343a40;">
+                Get in touch with us
+              </h1>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-sm-6 d-flex justify-content-center">
+                <img
+                  class="img-fluid"
+                  src="/image/contact.svg"
+                  style="max-width: 90%; height: auto"
+                />
+              </div>
+              
+              <div class="col-sm-6">
+                <form class="px-4 py-3">
+                    <label for="exampleDropdownName1" class="form-label label">Name*</label>
+                    <%if(login) {%>
+                      <input type="text" readonly="readonly" class="form-control inp" id="Name" value ="<%= user.Name %> "></input>
+                    <% }else{ %> 
+                      <input type="text" class="form-control inp" id="Name" placeholder="Your name">
+                    <% } %>
+
+                    <label for="exampleDropdownFormEmail1" class="mt-4 form-label label">Email*</label>
+                    <%if(login) {%>
+                      <input type="email" class="form-control inp" readonly="readonly" id="Email1" value=<%= user.Email %>>
+                    <% }else{ %> 
+                      <input type="email" class="form-control inp" id="Email1" placeholder="Your email">
+                      <% } %>
+                  
+                    <label for="exampleDropdownFormPassword1" class="mt-4 form-label label">Message*</label>
+                    <textarea class="form-control inp" style="resize: none;overflow: hidden;"id="Message" placeholder="Your Message"></textarea>
+                    
+                    <div class="mt-4">
+                      <button type="submit" class="button">SUBMIT</button>
+                    </div>
+                  </form>
+              </div>
+
+          </div>
+          
+          <div class="row d-flex mt-5" style="font-size: 10.4px;">
+                <div class="address col-sm-3 mb-4 text-center">
+                    <div class="row"><img src="/image/address.svg"  style="max-width: 7vmin; margin: 0 auto; padding: 0 auto;" alt=""></div>
+                    <p class="mt-2" style="font-size: 18px; font-weight: bold;letter-spacing: 2px;" >ADDRESS</p>
+                    <p style="margin-top:-15px; font-size: 12px; text-align: center;">Akshya Nagar 1st Block<br>1st Cross,<br>Rammurthy nagar,<br>Bangalore-560016</p>
+                </div>
+                <div class="phone col-sm-3 mb-4 text-center">
+                    <div class="row"><img src="/image/phone.svg" style="max-width: 65px;margin: 0 auto;" alt=""></div>
+                    <p class="mt-2" style="font-size: 175%; font-weight: bold;letter-spacing: 2px;" >PHONE US</p>
+                    <p style="margin-top:-15px; font-size: 12px; ">202-555-0177<br>202-555-0114</p>
+                </div>
+                <div class="email col-sm-3 mb-4 text-center">
+                    <div class="row"><img src="/image/email.svg" style="max-width: 65px;margin: 0 auto;"></div>
+                    <p class="mt-2" style="font-size: 18px; font-weight: bold;letter-spacing: 2px;" >EMAIL US</p>
+                    <p style="margin-top:-15px; font-size: 12px;">suppor@sxcmerch.com</p>
+                </div>
+                <div class="ping col-sm-3 mb-4 text-center">
+                    <div class="row" ><img src="/image/message.svg" style="max-width: 60px;margin: 0 auto;" alt=""></div>
+                    <p class="mt-2" style="font-size: 18px; font-weight: bold;letter-spacing: 2px;" >PING US</p>
+                    <div style="margin-top: -23px; font-size: 12px;">
+                      <!-- Twitter -->
+                      <a class="btn btn-link btn-floating" style="color: black"
+                        ><i class="fab fa-twitter"></i></a>
+            
+                      <!-- Google -->
+                      <a class="btn btn-link btn-floating" style="color: black"
+                        ><i class="far fa-envelope"></i></a>
+            
+                      <!-- Instagram -->
+                      <a class="btn btn-link btn-floating" style="color: black"
+                        ><i class="fab fa-instagram"></i></a>
+            
+                      <!-- Linkedin -->
+                      <a class="btn btn-link btn-floating" style="color: black"
+                        ><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.20761437836!2d77.67831501430484!3d13.02244699505024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae10e130d385f5%3A0xad013f80ae4eff6b!2s1st%20A%20Cross%20Rd%2C%20Akshaya%20Nagar%201st%20Block%2C%20Akshya%20Nagar%2C%20Ramamurthy%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560016!5e0!3m2!1sen!2sin!4v1627960713006!5m2!1sen!2sin" width="550" height="350" style="border:0;margin: 5px;" allowfullscreen="" loading="lazy"></iframe>  
+          </div>
+    </section>
+
+    <div class="footer">
+      <%- include('partials/footer') %> 
+
+    </div>
+    
+  </body>
+</html>

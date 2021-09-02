@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<%- include('partials/head') %> 
+
+  <body>
+    <!-- ------------ navbar ------------- -->
+    <%- include('partials/nav',{location: "merchandise"}) %> 
+
+    <div class="container text-center col-lg-8 col-md-12 col-sm-12 mb-5 mt-4" style="border-bottom: 1px solid black;">
+      <h1 class="merchheading">MERCHANDISE</h1>
+    </div>
+    <div class="container col-lg-8 col-md-12 col-sm-12 mb-5 mt-4">
+      <div class="row">
+        <div class="col-sm-2" style="border-right: 1px solid black; color: #343a40;">
+          <h4>Filter</h4>
+          <div>
+            <form action="/category" method="POST">
+            <h5>Category</h5>
+            <ul style="list-style-type: none; padding-left: 5%;" class="flex-wrap d-flex flex-lg-column flex-md-column">
+              <% for(let category of categories)   { %>
+                <% if(select.includes(category) ){ %>  
+                <li class="me-3"><label class="alink" style="text-transform: capitalize;"><input type="checkbox" id="<%=category%>" name="<%=category%>" checked> <%=category%></label></li>
+                <% }else{ %>
+                  <li class="me-3"><label class="alink" style="text-transform: capitalize;"><input type="checkbox" id="<%=category%>" name="<%=category%>"> <%=category%></label></li>  
+                  <% } %>      
+              <% } %> 
+              
+           </ul>
+          </div>
+          <div>
+            <h5>Price</h5>
+            <ul style="list-style-type: none; padding-left: 5%;" class="flex-wrap d-flex flex-lg-column flex-md-column">
+            
+              <% for(let p of price_value)   { %>
+                <% if(price.includes(p) ){ %>  
+                <li class="me-3"><label class="alink" style="text-transform: capitalize;"><input type="checkbox" id="<%=p%>" name="<%=p%>" checked> <%=p%></label></li>
+                <% }else{ %>
+                  <li class="me-3"><label class="alink" style="text-transform: capitalize;"><input type="checkbox" id="<%=p%>" name="<%=p%>"> <%=p%></label></li>  
+                  <% } %>      
+              <% } %> 
+            </ul>
+          </div>
+          <button class="nav-link signUp mb-5">Apply</button>
+        </div>
+      </form>
+        <div class="col-sm-10" >
+          <div class="row">
+            
+            <% let min1=-1;let max1=1;let min2=-1;let max2=1;let min3=-1;let max3=1; %>
+            <% if(!price.length==0){%>
+            
+            <%  for (var i = 0; i <price.length ; i++) {%>
+              <%    if(price[i]==price_value[0]){%>
+                <%    min1=0;%>
+                <%    max1=100; %>
+                <%  }else if(price[i]==price_value[1]){%>
+                <%    min2=100;%>
+                <%    max2=500;%>
+                <%  }else{%>
+                <%    min3=500;%>
+                <%    max3=10000; }%>
+         
+            <%}}%>
+           
+            <% var x=0; %>
+            <% for(let product of products)   { %>
+              <% if(select.includes(product.pCategory) || select.length==0){ %>
+                <% if(price.length==0 || (min1<product.pPrice && (max1>product.pPrice)) || (min2<product.pPrice && (max2>product.pPrice)) || (min3<product.pPrice && (max3>product.pPrice)) ){ %>
+                  <% x=x+1; %> 
+                  <div class="col-sm-6 col-xl-4 mb-4 ms-0">
+                    <!-- card body -->
+                    <div class="card h-100" style="border-radius: 20px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                      <img class="card-img-top p-3" style="border-radius: 40px" src="<%= product.pImage %> " alt="Card image cap">
+                      <div class="card-body" style="border-radius: 20%;">
+                        <div class="d-flex justify-content-between">
+                          <h4 class="card-title" style="font-size: 105%;"><%= product.pName %> </h4>
+                        <h5 class="card-text fw-bold text-end;"> ₹<%= product.pPrice %>  </h5>
+                        </div>
+                        
+                        <p class="card-text" style="font-size: 80%;"> <%= product.pDescription %> </p>
+                        <form class=" d-flex justify-content-between" action="/cart/<%=product._id %> " method="POST">
+                        <div class="boxed d-flex justify-content-between ps-2">
+                          <input type="radio" id="<%=product.pName+"s"%>" name="size" value="S" class="me-2">
+                          <label for="<%=product.pName+"s"%>" class="me-2">S</label>
+                        
+                          <input type="radio" id="<%=product.pName+"m"%>" checked name="size" value="M" class="me-2">
+                          <label for="<%=product.pName+"m"%>" class="me-2">M</label>
+                          
+                          <input type="radio" id="<%=product.pName+"l"%>" name="size" value="L" class="me-2">
+                          <label for="<%=product.pName+"l"%>" class="me-2">L</label>
+                        
+                          <input type="radio" id="<%=product.pName+"xl"%>" name="size" value="XL" class="me-2">
+                          <label for="<%=product.pName+"xl"%>" class="me-2">XL</label>
+                        
+                          <input type="radio" id="<%=product.pName+"xxl"%>" name="size" value="XXL" class="me-2">
+                          <label for="<%=product.pName+"xxl"%>" class="me-2">XXL</label>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">
+                          <!-- <form class=" d-flex justify-content-between" action="/cart/<%=product._id %> " method="POST"> -->
+                            <button type="submit" class="buyNow">Buy Now</button>
+                            <button type="submit" class="Cart w-50"><i class="fas fa-shopping-cart"></i> Cart</button>
+                          </form></small>
+                      </div>
+                    </div>
+
+                  </div>
+            <% } %> <% } %> <% } %>
+            <% if(x==0){ %>
+                    No item found
+            <% } %>  
+            </div>
+
+          </div>
+        </div>
+    </div>
+    <!-- ------------ navbar ------------- -->
+    <%- include('partials/footer') %> 
+   
+  </body>
+</html>
+
+<!-- <div class="card">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Last updated 3 mins ago</small>
+  </div>
+</div> -->
